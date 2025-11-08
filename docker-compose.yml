@@ -1,0 +1,37 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: medicare-doctor-web-app
+    restart: unless-stopped
+    env_file:
+      - .env
+    expose:
+      - "9000"
+    volumes:
+      - app_data:/var/www/html
+    networks:
+      - medicare-doctor-web-net
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: medicare-doctor-web-nginx
+    restart: unless-stopped
+    ports:
+      - "8001:80"
+    volumes:
+      - app_data:/var/www/html
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - app
+    networks:
+      - medicare-doctor-web-net
+
+networks:
+  medicare-doctor-web-net:
+    name: medicare-doctor-web-net
+    driver: bridge
+
+volumes:
+  app_data:
