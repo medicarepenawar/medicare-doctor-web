@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+}
+
+@import "tailwindcss";
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source '../**/*.tsx';
+@source '../**/*.ts';
+
+.input {
+    @apply w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none;
+}
+
+.input-file {
+    @apply block w-full border border-gray-300 rounded-lg p-2 cursor-pointer bg-gray-50;
+}
+
+.section-card {
+    @apply p-6 bg-white shadow-md rounded-xl border border-gray-100;
+}
+
+.section-title {
+    @apply text-xl font-semibold mb-4 text-gray-800;
+}
+
+.label {
+    @apply font-medium text-gray-700;
+}
+
+.error {
+    @apply text-red-600 text-sm mt-1;
+}
+
+@layer base {
+    button {
+        @apply cursor-pointer;
+    }
+}
+
+@layer utilities {
+    @keyframes fade-slide {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-slide {
+        animation: fade-slide 0.45s ease-out;
+    }
+}
